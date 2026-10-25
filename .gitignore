@@ -1,0 +1,34 @@
+# Python / editors
+__pycache__/
+*.pyc
+*.swp
+
+# Analysis outputs (make regen in recomp/)
+analysis/*.json
+analysis/*.dis
+
+# Tools built from source
+tools/unpack
+/recomp.*
+tools/recomp.*
+
+# Recompilation: generated C, objects, binaries, run outputs
+recomp/gen/
+recomp/*.o
+recomp/guile
+recomp/guile-cov
+recomp/recomp.*
+recomp/interp.*
+recomp/*.log
+recomp/screenshot-*.bmp
+recomp/*.png
+recomp/*.wav
+recomp/savedata/
+
+# The original disc and everything made from it: build.sh (recipe.json)
+# remakes them from the user's own copy.
+*.adf
+*.zip
+extracted/
+game/
+.claude/

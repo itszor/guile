@@ -1,0 +1,65 @@
+{
+ "name": "guile",
+ "title": "Guile (Dream Software; by Andrew Martin, a Softword publication)",
+ "platform": "acorn-archimedes",
+ "doc": "A recipe: how to turn a user's own copy of the game into a native executable. It holds no game data: the inputs are recognised by content (see $SS/tools/weave.py).",
+ "inputs": {
+  "containers": {
+   "Guile (19xx)(Dream Software).zip": "5a8b586f1f271c8df2568fc7d6631b09d6c32c5091e2e35875f9135ff11d6cbd"
+  },
+  "formats": [
+   "adf",
+   "zip"
+  ]
+ },
+ "discs": [
+  {
+   "name": "disc",
+   "title": "Guile (Dream Software): a CFS-compressed menu disc - !Guile, !Cfs, and utilities",
+   "known_images": [
+    "38dfe5cda5b7c458daed833f5c87c83ca73eff63cc23367654e0d2ae5520732a"
+   ],
+   "key_files": {
+    "!Cfs/CfsModule": "029d6ed5acb1eca1ca690cecac60661c40e1a128700397078840f7db09034533",
+    "!Guile/!Boot": "1f6f8680654da8842bb3efd1f3625914cc765b07e63a07e9994ce98ba40826f4",
+    "!Guile/!Run": "249faed31eb465aee8eeb13a91e6561ec5e9d06699a51f1da1c395d5eebbbcb9",
+    "!Guile/£/!Guile/!Run": "72de5ccb907a961834535ae4d60e792f926cbab00d91a93fd1728b875d1cc204",
+    "!Guile/£/!Guile/!Setup": "e456a087fb2555c2feb159e57c4c6c412fe5f285bea8e4deffbde5d6d6f9d60f",
+    "!Guile/£/!Guile/!Sprites": "4a3c2f8ccfbcc23d38a30fe915a2b3d7a99eb6bef25b77b90c4508e61a5b2b9a",
+    "!Guile/£/!Guile/DATA/Audio1": "7385ed4f7cca70fe2f87cc8704d0b77df48c53d30b7ba7a1f319ec02df666e4c",
+    "!Guile/£/!Guile/DATA/Audio2": "6e75eceec2333508471846fd8247583dce5ced76ed427647c8b8f514cf9ca517",
+    "!Guile/£/!Guile/DATA/RMAceFont": "689272a4d79ec9958ac6bea66a236105ce57b9a59d4ae42b472c2115c1eb05fb",
+    "!Guile/£/!Guile/DATA/checkdisc": "1b21aa2c5ad1143d20d91e8aafbdcfdec5e815266af7d2c7b2d9120501d4d5fc",
+    "!Guile/£/!Guile/DATA/models": "aa6d247b5566fac2dc52abd0925cbcc6662c8efe646aff935b52e09c4461b012",
+    "!Guile/£/!Guile/DATA/planes": "b88da47caf1af6ae22b42d941050da6b8e345b365816b5d92bfdf5a7cc578d7d",
+    "!Guile/£/!Guile/PLANETS/oldposn": "976d90c1565a0bb7846d542b142df3b6062688cad178dfe9c1deab4547dca901",
+    "!Guile/£/!Guile/PLANETS/planet1": "d0396fba3c0a6cd2d6f8671618a44909240c32fd05d8c517b3f1ec00359f41cc",
+    "!Guile/£/!Guile/PLANETS/planet2": "bedefdb94b3766629908f2472f957e3fb6c2a3a964377c3e7a6458c2450545ad",
+    "!Guile/£/!Guile/PLANETS/planet3": "5545a8eed35c245292b955edda137b08783fd0417b5b80dfe29244b698d6f896",
+    "!Guile/£/!Guile/PLANETS/planet4": "5b494a0e678566c863e08e5aa85eca50d9a6f0e525885589d311b104200b7bde",
+    "!Guile/£/!Guile/PLANETS/planet5": "b42f76ffc739771ae466abeac311c0469e9000c07bc35c12115315f43096896e",
+    "!Guile/£/!Guile/PLANETS/planet6": "7b70216630eb76aa3a1effd14a507778fc8694d84e23a637154545e107a55ed1",
+    "!Guile/£/!Guile/guile": "3ffc02f1893f4c220c5a9041663b275b9ce090a1aa7224afa8feaeccd4ecdb05"
+   },
+   "game_dirs": []
+  }
+ ],
+ "build": [
+  "python3 -I \"$WEAVE\" extract . INPUTS",
+  "make -C recomp game",
+  "make -C recomp regen",
+  "make -C recomp"
+ ],
+ "output": "recomp/guile",
+ "requires": {
+  "superspider": "~/stuff/superspider, or $SUPERSPIDER (dune build): analyse, gen, tools/weave.py",
+  "libroger": "~/stuff/libroger, or make ROGER=...",
+  "host": [
+   "python3",
+   "ocaml + dune",
+   "gcc",
+   "SDL3 (pkg-config sdl3)"
+  ]
+ },
+ "run": "cd recomp && ./guile"
+}
